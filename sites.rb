@@ -56,16 +56,16 @@ module Sites
 	Erabota = Site.new("http://nsk.erabota.ru/job/it/?page=%d", erabota_tokens, (1..17))
 	
 	ngs_tokens = {
-		'id' => 'class="saler"',
+		'id' => 'company-name.*?_blank',
 		'before' => '>',
-		'after' => '<'
+		'after' => '<\/a'
 	}
-	Ngs = Site.new("http://rabota.ngs.ru/vacancies/search/?pageType=search&rubrics[]=5&other2=yes&page=%d", ngs_tokens, (1..21))
+	Ngs = Site.new("http://rabota.ngs.ru/vacancy?page=%d&search_key=n8gohq&limit=25&order_by[]=orderby_date&order_dir[]=desc", ngs_tokens, (1..35))
 	
 	hh_tokens = {
-		'id' => 'class="b-vacancy-list-company"',
+		'id' => 'class="searchresult__placetime">',
 		'before' => '>',
 		'after' => '<'
 	}
-	Hh = Site.new("http://novosibirsk.hh.ru/applicant/searchvacancyresult.xml?orderBy=2&itemsOnPage=20&areaId=4&professionalAreaId=1&compensationCurrencyCode=RUR&searchPeriod=30&page=%d", hh_tokens, (0..10))
+	Hh = Site.new("http://novosibirsk.hh.ru/applicant/searchvacancyresult.xml?orderBy=2&itemsOnPage=20&areaId=4&professionalAreaId=1&compensationCurrencyCode=RUR&searchPeriod=30&page=%d", hh_tokens, (0..24))
 end
